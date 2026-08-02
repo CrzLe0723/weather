@@ -35,6 +35,9 @@ namespace Weather {
 
     let snowAmount = 1
 
+    let snowScale = 1
+
+    let snowDrift = 0.3
 
     let snowImage = img`
         . 1 .
@@ -66,8 +69,10 @@ namespace Weather {
         if (!enabled) return;
         enabled = false
 
+        spawnTimer = 0
 
     }
+    
     /**
      * remove all snowflakes
      */
@@ -96,6 +101,18 @@ namespace Weather {
         maxFallSpeed = Math.max(min, max)
     }
 
+    /** 
+     * set the snow drift amount 
+     * @param amount the amount of snow drift
+    */ 
+    //% block="set snow drift $amount"
+    //% amount.min=0 amount.max=5
+    //% subcategory="Snow"
+    //% group="Behavior"
+    export function setSnowDrift(amount: number) {
+        snowDrift = amount
+    }
+
     /**
      * set the wind strength
      * @param amount the wind strength
@@ -108,20 +125,6 @@ namespace Weather {
     //% group="Wind"
     export function setWind(amount: number) {
         targetWind = amount
-    }
-
-
-    /**
-     * set the snow image
-     * @param image the image for the snow 
-     */
-    //% blockId=snowweather_setSnowImage
-    //% block="set snow image to $image"
-    //% image.shadow=screen_image_picker
-    //% subcategory="Snow"
-    //% group="Appearance"
-    export function setSnowImage(image: Image) {
-        snowImage = image
     }
 
     /**
@@ -143,6 +146,31 @@ namespace Weather {
         timer.after(time, function () {
             targetWind = 0
         })
+    }
+
+    /**
+     * Set the snow scale 
+     * @param scale the scale of the snow
+     */
+    //% blockId=weather_setSnowScale
+    //% block="set snow scale $scale"
+    //% scale.min=0.1 scale.max=5
+    //% subcategory="Snow"
+    //% group="Appearance"
+    export function setSnowScale(scale: number) {
+        snowScale = scale
+    }
+    /**
+     * set the snow image
+     * @param image the image for the snow 
+     */
+    //% blockId=snowweather_setSnowImage
+    //% block="set snow image to $image"
+    //% image.shadow=screen_image_picker
+    //% subcategory="Snow"
+    //% group="Appearance"
+    export function setSnowImage(image: Image) {
+        snowImage = image
     }
 
 
@@ -188,10 +216,10 @@ namespace Weather {
             randint(-10, scene.screenWidth()),
             0
         )
+        snow.setScale(snowScale)
 
-        snow.vx = wind
         snow.vy = randint(minFallSpeed, maxFallSpeed)
-
+        sprites.setDataNumber(snow, "wobble", randint(0, 360))
         snow.setFlag(SpriteFlag.AutoDestroy, true)
         snow.setFlag(SpriteFlag.RelativeToCamera, true)
     }
@@ -214,7 +242,11 @@ namespace Weather {
 
         for (let snow of sprites.allOfKind(SpriteKind.WeatherSnow)) {
 
+            // wind movement
             snow.vx += (wind - snow.vx) * 0.02
+
+            // floating snow movement
+            snow.x += Math.sin(game.runtime() / 200 + sprites.readDataNumber(snow, "wobble")) * snowDrift
 
             if (snow.y > 125 ||
                 snow.x > 170 ||
