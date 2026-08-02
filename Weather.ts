@@ -2,6 +2,8 @@
 namespace SpriteKind {
     export const WeatherSnow = SpriteKind.create()
     export const WeatherWind = SpriteKind.create()
+    export const WeatherRain = SpriteKind.create()
+    export const WeatherFog = SpriteKind.create()
 }
 
 
@@ -31,8 +33,9 @@ namespace Weather {
     let spawnInterval = 50
     let spawnTimer = 0
 
+    let snowAmount = 1
 
-    //% whenused
+
     let snowImage = img`
         . 1 .
         1 1 1
@@ -63,11 +66,20 @@ namespace Weather {
         if (!enabled) return;
         enabled = false
 
+
+    }
+    /**
+     * remove all snowflakes
+     */
+    //% blockId=weather_clearSnow
+    //% block="clear snow"
+    //% subcategory="Snow"
+    //% group="Control"
+    export function clearSnow() {
         for (let snow of sprites.allOfKind(SpriteKind.WeatherSnow)) {
             snow.destroy()
         }
     }
-
     /**
      * set the snowfall speed 
      * @param min the minimum fall speed
@@ -135,7 +147,18 @@ namespace Weather {
 
 
 
-
+    /**
+     * Set snow intensity
+     * @param amount number of snowflakes spawned at once
+     */
+    //% blockId=weather_setSnowAmount
+    //% block="set snow amount $amount"
+    //% amount.min=1 amount.max=10
+    //% subcategory="Snow"
+    //% group="Behavior"
+    export function setSnowAmount(amount: number) {
+        snowAmount = Math.max(1, amount)
+    }
 
 
     /**
@@ -180,7 +203,9 @@ namespace Weather {
 
         if (spawnTimer >= spawnInterval) {
             spawnTimer = 0
-            createSnowflake()
+            for (let i = 0; i < snowAmount; i++) {
+                createSnowflake()
+            }
         }
     })
     game.onUpdate(function () {
