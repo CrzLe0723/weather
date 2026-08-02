@@ -1,7 +1,7 @@
 
 namespace SpriteKind {
-    export const SnowWeatherSnow = SpriteKind.create()
-    export const SnowWeatherWind = SpriteKind.create()
+    export const WeatherSnow = SpriteKind.create()
+    export const WeatherWind = SpriteKind.create()
 }
 
 
@@ -63,7 +63,7 @@ namespace Weather {
         if (!enabled) return;
         enabled = false
 
-        for (let snow of sprites.allOfKind(SpriteKind.SnowWeatherSnow)) {
+        for (let snow of sprites.allOfKind(SpriteKind.WeatherSnow)) {
             snow.destroy()
         }
     }
@@ -159,7 +159,7 @@ namespace Weather {
 
     //---Helper Functions---
     function createSnowflake() {
-        let snow = sprites.create(snowImage, SpriteKind.SnowWeatherSnow)
+        let snow = sprites.create(snowImage, SpriteKind.WeatherSnow)
 
         snow.setPosition(
             randint(-10, scene.screenWidth()),
@@ -187,7 +187,7 @@ namespace Weather {
 
         wind += (targetWind - wind) * 0.02
 
-        for (let snow of sprites.allOfKind(SpriteKind.SnowWeatherSnow)) {
+        for (let snow of sprites.allOfKind(SpriteKind.WeatherSnow)) {
 
             snow.vx += (wind - snow.vx) * 0.02
 
