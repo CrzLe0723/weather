@@ -117,7 +117,39 @@ namespace Weather {
     export function setSnowDrift(amount: number) {
         snowDrift = amount
     }
+    /**
+     * Set a preset snowfall mode.
+     * @param mode the snowfall mode
+     */
+    //% blockId=weather_setSnowMode
+    //% block="set snow mode $mode"
+    //% subcategory="Snow"
+    //% group="Behavior"
+    export function setSnowMode(mode: WeatherMode) {
+        switch (mode) {
 
+            case WeatherMode.Calm:
+                setSnowAmount(1)
+                setSnowSpawnInterval(120)
+                setSnowFallSpeed(15, 30)
+                setWind(5)
+                break
+
+            case WeatherMode.Snow:
+                setSnowAmount(2)
+                setSnowSpawnInterval(60)
+                setSnowFallSpeed(20, 50)
+                setWind(20)
+                break
+
+            case WeatherMode.Blizzard:
+                setSnowAmount(5)
+                setSnowSpawnInterval(20)
+                setSnowFallSpeed(50, 80)
+                setWind(150)
+                break
+        }
+    }
     /**
      * set the wind strength
      * @param amount the wind strength
