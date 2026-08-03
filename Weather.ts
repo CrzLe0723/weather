@@ -52,6 +52,7 @@ namespace Weather {
     //% block="start snow"
     //% subcategory="Snow"
     //% group="Control"
+    //% weight=100
     export function start() {
         if (enabled) return
 
@@ -65,6 +66,7 @@ namespace Weather {
     //% block="stop snow"
     //% subcategory="Snow"
     //% group="Control"
+    //% weight=95
     export function stop() {
         if (!enabled) return;
         enabled = false
@@ -80,6 +82,7 @@ namespace Weather {
     //% block="clear snow"
     //% subcategory="Snow"
     //% group="Control"
+    //% weight=90
     export function clearSnow() {
         for (let snow of sprites.allOfKind(SpriteKind.WeatherSnow)) {
             snow.destroy()
