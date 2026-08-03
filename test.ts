@@ -13,6 +13,6 @@ timer.after(10000, function () {
 
     // Strong gusts every 5 seconds
     game.onUpdateInterval(5000, function () {
-        Weather.gust(220, 1200)
+        Weather.gust(randint(250, 800), 1200)
     })
 })
