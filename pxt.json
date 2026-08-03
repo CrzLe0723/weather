@@ -1,5 +1,5 @@
 {
-    "name": "Snowfall & Windeffect",
+    "name": "weather",
     "description": "A modular weather effects engine for MakeCode Arcade with snow, wind, fog, rain, and atmospheric effects.",
     "dependencies": {
         "device": "*",
