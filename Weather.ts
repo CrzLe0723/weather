@@ -39,6 +39,8 @@ namespace Weather {
 
     let snowDrift = 0.3
 
+    let snowZ = 1
+
     let snowImage = img`
         . 1 .
         1 1 1
@@ -176,7 +178,18 @@ namespace Weather {
         snowImage = image
     }
 
-
+    /**
+     * set the snow z
+     * @param z the snow z
+     */
+    //% blockId=snowweather_snowz
+    //% block="set snow z to $z"
+    //% z.shadow=math_number
+    //% subcategory="Snow"
+    //% group="Appearance"
+    export function setSnowZ(z: number) {
+        snowZ = z
+    }
 
     /**
      * Set snow intensity
@@ -220,7 +233,7 @@ namespace Weather {
             0
         )
         snow.setScale(snowScale)
-
+        snow.z = snowZ
         snow.vy = randint(minFallSpeed, maxFallSpeed)
         sprites.setDataNumber(snow, "wobble", randint(0, 360))
         snow.setFlag(SpriteFlag.AutoDestroy, true)
