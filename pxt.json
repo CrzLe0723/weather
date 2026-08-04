@@ -14,7 +14,8 @@
         "README.md",
         "assets.json",
         "Weather.ts",
-        "docs/start.md"
+        "docs/start.md",
+        "docs/stop.md"
     ],
     "testFiles": [
         "test.ts",
