@@ -46,6 +46,8 @@ namespace Weather {
         1 1 1
         . 1 .
     `
+    let hadSnow = false
+    let snowClearHandlers: (() => void)[] = []
 
     /**
      * start the snowfall effect
@@ -88,6 +90,17 @@ namespace Weather {
     export function clearSnow() {
         for (let snow of sprites.allOfKind(SpriteKind.WeatherSnow)) {
             snow.destroy()
+        }
+    }
+    //% blockId=weather_waitForSnowToClear
+    //% block="wait for snow to clear"
+    //% async
+    //% subcategory="Snow"
+    //% group="Control"
+    //% weight=85
+    export function waitForSnowToStop(): void {
+        while (sprites.allOfKind(SpriteKind.WeatherSnow).length > 0) {
+            pause(100)
         }
     }
     /**
@@ -252,7 +265,17 @@ namespace Weather {
         spawnInterval = Math.max(10, interval)
     }
 
-
+    /**
+     * Runs when the last snowflake disappears.
+     * @param handler code to run when all snow clears
+     */
+    //% blockId=weather_onSnowClear
+    //% block="when all snow clears"
+    //% subcategory="Snow"
+    //% group="Events"
+    export function onSnowClear(handler: () => void) {
+        snowClearHandlers.push(handler)
+    }
 
 
 
@@ -290,11 +313,7 @@ namespace Weather {
 
         for (let snow of sprites.allOfKind(SpriteKind.WeatherSnow)) {
 
-            // wind movement
             snow.vx += (wind - snow.vx) * 0.02
-
-            // floating snow movement
-            snow.x += Math.sin(game.runtime() / 200 + sprites.readDataNumber(snow, "wobble")) * snowDrift
 
             if (snow.y > 125 ||
                 snow.x > 170 ||
@@ -304,5 +323,15 @@ namespace Weather {
             }
         }
 
+        let hasSnow = sprites.allOfKind(SpriteKind.WeatherSnow).length > 0
+
+        // Snow existed, but now all of it is gone
+        if (hadSnow && !hasSnow) {
+            for (let handler of snowClearHandlers) {
+                handler()
+            }
+        }
+
+        hadSnow = hasSnow
     })
 }
