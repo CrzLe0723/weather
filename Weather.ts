@@ -46,8 +46,18 @@ namespace Weather {
         1 1 1
         . 1 .
     `
+    let snowWasActive = false
+    let previousWind = 0
+
     let hadSnow = false
+
+    let snowStartHandlers: (() => void)[] = []
+    let snowStopHandlers: (() => void)[] = []
     let snowClearHandlers: (() => void)[] = []
+    let windPickUpHandlers: (() => void)[] = []
+    let windCalmHandlers: (() => void)[] = []
+
+
 
     /**
      * start the snowfall effect
@@ -266,7 +276,31 @@ namespace Weather {
     }
 
     /**
-     * Runs when the last snowflake disappears.
+     * Runs when snowfall starts.
+     * @param handler code to run when snowfall starts
+     */
+    //% blockId=weather_onSnowStart
+    //% block="when snow starts"
+    //% subcategory="Snow"
+    //% group="Events"
+    export function onSnowStart(handler: () => void) {
+        snowStartHandlers.push(handler)
+    }
+
+    /**
+     * Runs when snowfall stops.
+     * @param handler code to run when snowfall stops
+     */
+    //% blockId=weather_onSnowStop
+    //% block="when snow stops"
+    //% subcategory="Snow"
+    //% group="Events"
+    export function onSnowStop(handler: () => void) {
+        snowStopHandlers.push(handler)
+    }
+
+    /**
+     * Runs when all existing snowflakes have disappeared.
      * @param handler code to run when all snow clears
      */
     //% blockId=weather_onSnowClear
@@ -277,6 +311,29 @@ namespace Weather {
         snowClearHandlers.push(handler)
     }
 
+    /**
+     * Runs when the wind becomes strong.
+     * @param handler code to run when the wind becomes strong
+     */
+    //% blockId=weather_onWindPickup
+    //% block="when wind picks up"
+    //% subcategory="Snow"
+    //% group="Events"
+    export function onWindPickup(handler: () => void) {
+        windPickUpHandlers.push(handler)
+    }
+
+    /**
+     * Runs when strong wind calms down.
+     * @param handler code to run when the wind calms down
+     */
+    //% blockId=weather_onWindCalm
+    //% block="when wind calms"
+    //% subcategory="Snow"
+    //% group="Events"
+    export function onWindCalm(handler: () => void) {
+        windCalmHandlers.push(handler)
+    }
 
 
     //---Helper Functions---
