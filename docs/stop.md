@@ -3,15 +3,15 @@
 Stop the current snowfall
 
 ```sig
-weather.stop()
+Weather.stop()
 ```
 
 ## Example
 
 ```blocks
-weather.start()
+Weather.start()
 pause(5000)
-weather.stop()
+Weather.stop()
 ```
 
 ```package
