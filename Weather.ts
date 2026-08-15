@@ -90,7 +90,9 @@ namespace Weather {
     }
     
     /**
-     * remove all snowflakes
+     * Clears all snow.
+     *
+     * @fires snowClear
      */
     //% blockId=weather_clearSnow
     //% block="clear snow"
