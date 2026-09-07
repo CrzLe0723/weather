@@ -12,7 +12,9 @@ namespace Location {
      */
     //% block="request location"
     //% group="Location"
+    //% shim=Location::request
     export function request(): void {
+        // Simulator implementation will go here later.
     }
 
     /**
