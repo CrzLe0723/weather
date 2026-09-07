@@ -25,7 +25,7 @@
     ],
     "simFiles": [
         "sim/location.ts"
-    ]
+    ],
     "targetVersions": {
         "target": "4.1.17",
         "targetId": "arcade"
