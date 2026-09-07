@@ -1,8 +1,7 @@
 {
     "name": "weather",
-    "description": "A modular weather effects engine for MakeCode Arcade with snow, wind, fog, rain, and atmospheric effects.",
     "version": "0.0.5",
-    "author": "CrzLe0723",
+    "description": "A modular weather effects engine for MakeCode Arcade with snow, wind, fog, rain, and atmospheric effects.",
     "license": "MIT",
     "dependencies": {
         "device": "*",
@@ -26,9 +25,6 @@
         "test.ts",
         "otherTest.ts"
     ],
-    "simFiles": [
-        "sim/location.ts"
-    ],
     "targetVersions": {
         "target": "4.1.17",
         "targetId": "arcade"
@@ -36,5 +32,9 @@
     "supportedTargets": [
         "arcade"
     ],
-    "preferredEditor": "tsprj"
+    "preferredEditor": "tsprj",
+    "author": "CrzLe0723",
+    "simFiles": [
+        "sim/location.ts"
+    ]
 }
