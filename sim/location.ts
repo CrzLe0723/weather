@@ -1,17 +1,13 @@
+declare const navigator: any
+
 namespace pxsim.Location {
-    export function request(): void {
-        navigator.geolocation.getCurrentPosition(
-            (position) => {
-                console.log(
-                    "Location: " +
-                    position.coords.latitude +
-                    ", " +
-                    position.coords.longitude
-                )
-            },
-            (error) => {
-                console.log("Geolocation error: " + error.message)
-            }
-        )
+    export function test(): number {
+        if (navigator && navigator.geolocation) {
+            console.log("Geolocation exists!")
+            return 1
+        }
+
+        console.log("Geolocation does not exist!")
+        return 0
     }
 }
