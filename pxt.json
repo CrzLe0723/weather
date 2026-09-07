@@ -16,6 +16,7 @@
         "Weather.ts",
         "temp.ts",
         "location.ts",
+        "simulator.ts",
         "docs/start.md",
         "docs/stop.md"
     ],
