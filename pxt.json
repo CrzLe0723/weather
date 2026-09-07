@@ -1,6 +1,9 @@
 {
     "name": "weather",
     "description": "A modular weather effects engine for MakeCode Arcade with snow, wind, fog, rain, and atmospheric effects.",
+    "version": "0.0.5",
+    "author": "CrzLe0723",
+    "license": "MIT",
     "dependencies": {
         "device": "*",
         "Extra Effects": "github:alexszeto/extra-effects#v3.1.0",
