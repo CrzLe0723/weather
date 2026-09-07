@@ -62,7 +62,7 @@ namespace Temperature {
     /**
      * Convert fahrenheit to celsius
     */
-    //% block="convert fahrenheit $f to celsius 
+    //% block="convert fahrenheit $f to celsius"
     //% group="Conversion"
     export function convertFtoC(f: number): number { 
         celsiusVar = (f - 32) / 1.8
@@ -72,7 +72,7 @@ namespace Temperature {
     /**
      * Convert celsius to farhenheit
     */
-    //% block="convert celsius $c to fahrenheit 
+    //% block="convert celsius $c to fahrenheit"
     //% group="Conversion"
     export function convertCtoF(c: number): number { 
         farhenheitVar = (c + 32) * 1.8
