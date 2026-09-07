@@ -15,6 +15,7 @@
         "assets.json",
         "Weather.ts",
         "temp.ts",
+        "location.ts",
         "docs/start.md",
         "docs/stop.md"
     ],
