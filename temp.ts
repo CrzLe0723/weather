@@ -4,8 +4,8 @@
 //% weight=29 color=#FFAD1F icon="\uf2ca"
 namespace Temperature {
 
-    let celsius: number = 0 // placeholder 
-    let fahrenheit: number = 32 // placeholder
+    let celsiusVar: number = 0 // placeholder 
+    let farhenheitVar: number = 32 // placeholder
 
     /**
      * Get the latest temperature in Celsius
@@ -65,18 +65,18 @@ namespace Temperature {
     //% block="convert fahrenheit $f to celsius 
     //% group="Conversion"
     export function convertFtoC(f: number): number { 
-        celsius = (f - 32) / 1.8
+        celsiusVar = (f - 32) / 1.8
 
-        return celsius
+        return celsiusVar
     }
     /**
      * Convert celsius to farhenheit
     */
     //% block="convert celsius $c to fahrenheit 
     //% group="Conversion"
-    export function convertFtoC(c: number): number { 
-        farhenheit = (c + 32) * 1.8
+    export function convertCtoF(c: number): number { 
+        farhenheitVar = (c + 32) * 1.8
 
-        return farhenheit
+        return farhenheitVar
     }
 }
