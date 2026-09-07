@@ -1,7 +1,7 @@
 /**
  * Temperature
  */
-//% weight=90 color=#FFAD1F icon="\uf2ca"
+//% weight=29 color=#FFAD1F icon="\uf2ca"
 namespace Temperature {
 
     /**

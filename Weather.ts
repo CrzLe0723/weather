@@ -10,7 +10,7 @@ namespace SpriteKind {
 /**
  * Custom Weather Blocks
  */
-//% weight=100 color=#42a5f5 icon="\uf0c2"
+//% weight=30 color=#42a5f5 icon="\uf0c2"
 namespace Weather {
 
     export enum WeatherMode {
