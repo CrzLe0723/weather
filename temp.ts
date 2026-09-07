@@ -64,6 +64,7 @@ namespace Temperature {
     */
     //% block="convert fahrenheit $f to celsius"
     //% group="Conversion"
+    //% f.shadow="protractorPicker" f.defl=32
     export function convertFtoC(f: number): number { 
         celsiusVar = (f - 32) / 1.8
 
@@ -74,6 +75,7 @@ namespace Temperature {
     */
     //% block="convert celsius $c to fahrenheit"
     //% group="Conversion"
+    //% c.shadow="protractorPicker" c.defl=0
     export function convertCtoF(c: number): number { 
         farhenheitVar = (c + 32) * 1.8
 
