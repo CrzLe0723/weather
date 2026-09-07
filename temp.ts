@@ -4,6 +4,9 @@
 //% weight=29 color=#FFAD1F icon="\uf2ca"
 namespace Temperature {
 
+    let celsius: number = 0 // placeholder 
+    let fahrenheit: number = 32 // placeholder
+
     /**
      * Get the latest temperature in Celsius
      */
@@ -54,5 +57,26 @@ namespace Temperature {
     //% block="stop temperature updates"
     //% group="Updates"
     export function stop(): void {
+    }
+
+    /**
+     * Convert fahrenheit to celsius
+    */
+    //% block="convert fahrenheit $f to celsius 
+    //% group="Conversion"
+    export function convertFtoC(f: number): number { 
+        celsius = (f - 32) / 1.8
+
+        return celsius
+    }
+    /**
+     * Convert celsius to farhenheit
+    */
+    //% block="convert celsius $c to fahrenheit 
+    //% group="Conversion"
+    export function convertFtoC(c: number): number { 
+        farhenheit = (c + 32) * 1.8
+
+        return farhenheit
     }
 }
