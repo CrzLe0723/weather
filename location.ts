@@ -14,7 +14,24 @@ namespace Location {
     //% group="Location"
     //% shim=Location::request
     export function request(): void {
-        // Simulator implementation will go here later.
+        const nav: any = (globalThis as any).navigator
+
+        if (!nav || !nav.geolocation) {
+            console.log("Geolocation is not supported by this browser.")
+            return
+        }
+
+        nav.geolocation.getCurrentPosition(
+            (position: any) => {
+                latitudeValue = position.coords.latitude
+                longitudeValue = position.coords.longitude
+                readyValue = true
+            },
+            (error: any) => {
+                console.log("Geolocation error: " + error.message)
+                readyValue = false
+            }
+        )
     }
 
     /**
