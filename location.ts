@@ -7,11 +7,16 @@ namespace Location {
     let longitudeValue = 0
     let readyValue = false
 
+     /**
+     * Request the current location
+     */
     //% block="request location"
     //% group="Location"
+    //% shim=Location::request
     export function request(): void {
     }
 
+    
     //% block="latitude"
     //% group="Location"
     export function latitude(): number {
