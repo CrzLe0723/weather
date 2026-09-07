@@ -13,9 +13,6 @@ namespace Location {
     //% block="request location"
     //% group="Location"
     export function request(): void {
-        if (typeof pxsim !== "undefined") {
-            pxsim.Location.request()
-        }
     }
 
     /**
