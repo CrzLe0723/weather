@@ -16,7 +16,6 @@
         "Weather.ts",
         "temp.ts",
         "location.ts",
-        "shims.d.ts",
         "sim/location.ts",
         "docs/start.md",
         "docs/stop.md"
