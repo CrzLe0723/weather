@@ -8,6 +8,17 @@ namespace Location {
     let readyValue = false
 
     /**
+     * Request the current location
+     */
+    //% block="request location"
+    //% group="Location"
+    export function request(): void {
+        if (typeof pxsim !== "undefined") {
+            pxsim.Location.request()
+        }
+    }
+
+    /**
      * Get the current latitude
      */
     //% block="latitude"
@@ -32,14 +43,5 @@ namespace Location {
     //% group="Location"
     export function isReady(): boolean {
         return readyValue
-    }
-
-    /**
-     * Request the current location
-     */
-    //% block="request location"
-    //% group="Location"
-    export function request(): void {
-        // Simulator implementation will handle this.
     }
 }
