@@ -1,7 +1,7 @@
 /**
  * Location
  */
-//% weight=90 color=#FFAD1F icon="\uf3c5"
+//% weight=28 color=#EE2B2B icon="\uf3c5"
 namespace Location {
     let latitudeValue = 0
     let longitudeValue = 0
